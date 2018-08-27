@@ -1,4 +1,4 @@
-// 作品をコンポーネントにする
+// 作品の内容を充実させる
 
 import {Component} from 'react'
 import Head from 'next/head'
@@ -6,12 +6,24 @@ import Head from 'next/head'
 // それぞれの作品
 class Product extends Component {
     render() {
-        return(
-            <div>{this.props.product.name}</div>
+        return (
+            <div className="product">
+                <div>作品名: {this.props.product.name}</div>
+                <div>チーム: {this.props.product.team}</div>
+
+                <style jsx>{`
+                    .product {
+                        border: 3px solid limegreen;
+                        border-radius: 5px;
+                        margin: 1em;
+                    }
+                `}</style>
+            </div>
         )
     }
 }
 
+// 作品一覧を表示する
 export default class extends Component {
     // 初期データを与える
     static async getInitialProps() {
