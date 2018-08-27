@@ -1,7 +1,16 @@
-// モバイルで見やすくする
+// 作品をコンポーネントにする
 
 import {Component} from 'react'
 import Head from 'next/head'
+
+// それぞれの作品
+class Product extends Component {
+    render() {
+        return(
+            <div>{this.props.product.name}</div>
+        )
+    }
+}
 
 export default class extends Component {
     // 初期データを与える
@@ -26,7 +35,7 @@ export default class extends Component {
                 </Head>
                 <h1>ハッカソン作品リスト</h1>
                 {
-                    this.props.products.map(p => <div key={p.name}>{p.name}</div>)
+                    this.props.products.map(p => <Product key={p.name} product={p}/>)
                 }
 
                 <style jsx>{`
