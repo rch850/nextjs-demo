@@ -1,6 +1,7 @@
-// ハッカソンの作品一覧を表示する
+// モバイルで見やすくする
 
 import {Component} from 'react'
+import Head from 'next/head'
 
 export default class extends Component {
     // 初期データを与える
@@ -20,6 +21,9 @@ export default class extends Component {
     render() {
         return(
             <div>
+                <Head>
+                    <meta name="viewport" content="width=device-width,initial-scale=1" />
+                </Head>
                 <h1>ハッカソン作品リスト</h1>
                 {
                     this.props.products.map(p => <div key={p.name}>{p.name}</div>)
