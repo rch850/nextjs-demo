@@ -1,15 +1,33 @@
-// 作品の内容を充実させる
+// 投票ボタンをつける
 
 import {Component} from 'react'
 import Head from 'next/head'
 
 // それぞれの作品
 class Product extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            count: 0
+        }
+    }
+    add(num) {
+        this.setState(prevState => {
+            return {
+                count: prevState.count + num
+            }
+        })
+    }
     render() {
         return (
             <div className="product">
                 <div>作品名: {this.props.product.name}</div>
                 <div>チーム: {this.props.product.team}</div>
+                <div>
+                    {this.state.count}票
+                    <button onClick={e => this.add(1)}>票を増やす</button>
+                    <button onClick={e => this.add(-1)}>票を減らす</button>
+                </div>
 
                 <style jsx>{`
                     .product {
